@@ -32,7 +32,7 @@ const Register = () => {
 
     return (
         <div className="container" >
-            <section className="d-flex align-items-center justify-content-between text-lg-start" style={{marginTop:'100PX'}} >
+            <section className="d-flex align-items-center justify-content-around text-lg-start" style={{marginTop:'100PX'}} >
                       {/* Image Section */}
                       <div className="cardi" style={{ width: "45%" }}>
                     <img 

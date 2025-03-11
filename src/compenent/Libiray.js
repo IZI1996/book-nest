@@ -51,7 +51,7 @@ const Library = () => {
 
                 const result = await response.json();
                 if (result.success) {
-                    setBooks(books.filter(book => book.id !== bookId)); // Remove from UI
+                    setBooks(books.filter(book => book.id !== bookId));
                 } else {
                     alert("Failed to delete the book.");
                 }
@@ -67,7 +67,7 @@ const Library = () => {
                 <button 
                     onClick={handleAddBookClick}
                     className="btn btn-secondary"
-                    style={{ marginTop: "90px" }} 
+                    style={{ marginTop: "140px" }} 
                 >
                     Add Book
                 </button>
@@ -75,8 +75,8 @@ const Library = () => {
 
             <div className="row">
                 <div className="col-md-4">
-                    <div className="mb-4 text-lg-start ">
-                        <label htmlFor="typeFilter" className="form-label  ">Filter by Type:</label>
+                    <div className="mb-4 text-lg-start">
+                        <label htmlFor="typeFilter" className="form-label">Filter by Type:</label>
                         <select
                             id="typeFilter"
                             value={selectedType}
@@ -97,38 +97,33 @@ const Library = () => {
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {filteredBooks.map((book) => (
                     <div className="col" key={book.id}>
-                        <div className="card shadow-sm">
-                            {book.image_url ? (
-                                <img
-                                    src={`http://localhost/bookBack/${book.image_url}`}
-                                    alt={book.title}
-                                    className="card-img-top"
-                                    style={{ height: "250px", objectFit: "cover" }}
-                                />
-                            ) : (
-                                <p className="text-center mt-3">No image available</p>
-                            )}
-                            <div className="card-body">
-                                <h5 className="card-title">{book.title}</h5>
-                                <p className="card-text">Author: {book.author}</p>
-                                <p className="card-text">Year: {book.year}</p>
-                                <p className="card-text">Type: {book.type_name}</p>
-                                
-                                <div className="d-flex gap-2">
-                                    <button 
-                                        onClick={() => handleEditClick(book.id)}
-                                        className="btn btn-secondary w-50"
-                                        // style={{ backgroundColor: '#f9525a' }}
-                                    >
-                                        Edit
-                                    </button>
-                                    <button 
-                                        onClick={() => handleDelete(book.id)}
-                                        className="btn btn-danger w-50"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
+                        <div 
+                            className="shadow-lg position-relative d-flex flex-column align-items-center"
+                            style={{
+                                backgroundImage: `url(http://localhost/bookBack/${book.image_url})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                height: "400px",
+                                width: "250px",
+                                borderRadius: "10px",
+                                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                                margin: "auto",
+                                paddingBottom: "60px"
+                            }}
+                        >
+                            <div className="position-absolute bottom-0 w-100 p-3 bg-white text-center rounded-bottom" style={{ marginTop: "0px" }}>
+                                <button 
+                                    onClick={() => handleEditClick(book.id)}
+                                    className="btn btn-outline-secondary btn-sm me-2 w-45"
+                                >
+                                    Edit
+                                </button>
+                                <button 
+                                    onClick={() => handleDelete(book.id)}
+                                    className="btn btn-outline-danger btn-sm w-45"
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     </div>

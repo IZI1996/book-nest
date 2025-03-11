@@ -20,7 +20,7 @@ const about = () => {
               </div>
             </div>
             <div className="col-lg-6 d-flex align-items-center">
-              <img src={`${process.env.PUBLIC_URL}/images/idea.png`} className="img-fluid" alt="Book Sharing"style={{  width:'1000px',height:'400px' ,marginLeft: "70px" ,marginTop:"90px"}} />
+              <img src={`${process.env.PUBLIC_URL}/images/idea.png`} className="img-fluid" alt="Book Sharing"style={{ marginLeft: "70px" ,marginTop:"90px"}} />
             </div>
           </div>
         </div>

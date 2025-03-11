@@ -58,7 +58,6 @@ const EditBook = () => {
     setBook({ ...book, image_url: e.target.files[0] });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 

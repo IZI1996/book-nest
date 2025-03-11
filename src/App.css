@@ -113,6 +113,8 @@ body{
   color: black;
   white-space: nowrap;
   transition: 0.3s;
+  text-decoration: none;
+
 
 }
 
@@ -125,6 +127,31 @@ body{
 
 .navbar a:hover, .navbar .active, .navbar li:hover > a {
   color:  #f9525a;
+}
+
+.header {
+  transition: transform 0.3s ease-in-out;
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.header.visible {
+  transform: translateY(0);
+}
+
+
+
+.header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
 }
 
 

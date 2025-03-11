@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [responseMessage, setResponseMessage] = useState("");
-    const navigate = useNavigate(); // Initialize navigate function
+    const navigate = useNavigate();
 
 
     const handleChange = (e) => {
@@ -22,8 +22,7 @@ const Login = () => {
         }
     };
     const handleLogin = () => {
-        // Add your login logic here if needed
-        navigate("/libiray"); // Navigate to the library page
+        navigate("/libiray"); 
     };
     return (
         <div className="container" style={{ marginTop: "92px" }}>
