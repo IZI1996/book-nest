@@ -19,7 +19,7 @@ function Home() {
               </p>
               <div className="text-lg-start">
   <a 
-    href="/add" 
+    href="/reg" 
     className="btn-get-started"
   >
     <i className="fas fa-book"></i>

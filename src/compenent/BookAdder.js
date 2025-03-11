@@ -58,7 +58,7 @@ const BookAdder = () => {
 
     return (
         <div className="container" style={{ marginTop: "92px" }}>
-            <section className="d-flex align-items-center justify-content-between">
+            <section className="d-flex align-items-center justify-content-between text-lg-start">
                 {/* Form Section */}
                 <div className="card shadow p-4 " style={{ width: "50%" }}>
                     <h2 className="text-center mb-4">Add a New Book</h2>

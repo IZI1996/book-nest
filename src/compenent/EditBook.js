@@ -100,7 +100,7 @@ const EditBook = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-around " style={{marginTop:'100px'}} >
+    <div className="container d-flex justify-content-around text-lg-start " style={{marginTop:'120px'}} >
       <div className="w-50 shadow p-4"  >
         <h2>Edit Book</h2>
         <form onSubmit={handleSubmit}>
@@ -163,11 +163,11 @@ const EditBook = () => {
           </div>
 
           {/* Display the current image */}
-          {book.profileImageUrl && (
+          {book.image_url && (
             <div className="mb-3">
               <label className="form-label">Current Image:</label>
               <img
-                src={book.profileImageUrl}
+                src={book.image_url}
                 alt="Book"
                 className="img-fluid"
                 style={{ width: "150px", height: "150px", objectFit: "cover" }}
@@ -187,14 +187,14 @@ const EditBook = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary btn-sm">Update Book</button>
+          <button type="submit" className="btn btn-primary btn-sm center" style={{backgroundColor:'#f9525a'}}>Update Book</button>
         </form>
                {/* Image Section */}
            
       </div>
       <div className="cardi" style={{ width: "45%" }}>
                     <img 
-                        src="/images/print.png" 
+                        src="/images/edit.png" 
                         alt="Add Book" 
                         className="img-fluid" 
                         style={{ height: "500px", objectFit: "cover",color:'#f9525a' }} 

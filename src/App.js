@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './compenent/Home.js';
 import Navbar from './compenent/Navbar.js';
 import About from './compenent/About.js';
+import Register from './conx/Rgister.js';
+import Login from './conx/login.js';
 
 
 
@@ -25,6 +27,10 @@ function App() {
              <Route path="/libiray" element={<Libiray />} />
               <Route path="/add" element={<BookAdder />} />
                 <Route path="/edit/:id" element={<EditBook />} />
+                <Route path="/reg" element={<Register />} />
+                <Route path="/log" element={<Login />} />
+
+
 
             </Routes>
             </BrowserRouter>
