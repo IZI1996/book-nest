@@ -42,7 +42,7 @@ const Store = () => {
     const filteredBooks = books.filter((book) => {
         const isTypeMatch = selectedType ? book.type_name === selectedType : true;
         const isSearchMatch =
-            (book.tile?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+            (book.title?.toLowerCase().includes(searchTerm.toLowerCase()) || 
             book.type_name?.toLowerCase().includes(searchTerm.toLowerCase()));
         return isTypeMatch && isSearchMatch;
     });

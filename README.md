@@ -1,111 +1,184 @@
-
-### 1. Planning and Analysis  
-
-**Goal:**  
-Initially, I defined the goal of the project, which was to create an application for managing books that allows users to add, view, edit, and delete books.  
-
-**Analysis:**  
-I started by analyzing the requirements and understood that I needed a database to store book data, book type, and publication year. I decided to use technologies that align with Full Stack Development to meet these needs.  
+### **Project Documentation: Old Book Management System**  
 
 ---
 
-### 2. Choosing the Technologies  
+#### **1. Project Idea and Objectives**  
+**Main Objective:**  
+Create an electronic platform for selling used books containing readers' notes, aiming to:  
+- **Preserve Cultural Heritage**: Prevent the loss of books with intellectual value by providing a platform for selling them.  
+- **Promote Knowledge Exchange**: Enable users to share their notes on books.  
+- **Enhanced User Experience**: Design an intuitive interface reflecting the nature of old books and simplifying purchasing/management processes.  
 
+**Key Features:**  
+- Display book details (name, author, price, cover image, category).  
+- Book management operations (add/edit/delete) with secure JWT authentication.  
+- Interactive interface with search and filtering by name or category.  
+- Aesthetic design reflecting a heritage theme using carefully chosen colors and fonts.  
+
+---
+
+#### **2. Planning and Requirements Analysis**  
+**Target Audience:**  
+- **Readers**: Seeking rare or classic books.  
+- **Sellers**: Wanting to sell their books while preserving their handwritten notes.  
+
+**Functional Requirements:**  
+- User registration/login system.  
+- Book management (view, add, edit, delete).  
+- Filter books by category (literature, science, history, etc.).  
+- Search by name or author.  
+
+**Non-Functional Requirements:**  
+- Intuitive user interface reflecting cultural heritage.  
+- High security via password encryption and JWT.  
+
+---
+
+#### **3. Technologies Used**  
 **Frontend:**  
-- I decided to use React for building the user interface (UI) because it allows for the creation of flexible and reusable components.  
-- I used Bootstrap for rapid and easy UI design.  
-- I implemented React Router for navigation between different pages within the application.  
+- **React.js**: To build an interactive UI with reusable components (e.g., book cards, management forms).  
+- **Bootstrap**: For rapid, responsive styling with custom color and font adjustments.  
+- **React Router**: To manage navigation between pages (Home, Cart, Login, Book Management).  
+- **Axios**: To send HTTP requests to the backend.  
 
 **Backend:**  
-- I used PHP with MySQL to create an API that processes the data sent from the frontend.  
-- The MySQL database includes a `books` table for storing book information and a `types` table to store different types of books (such as Technologyq, Science Fiction, etc.).  
+- **PHP**: To build JWT-protected API endpoints.  
+- **MySQL**: Database with tables:  
+  - `books` (stores book data).  
+  - `users` (stores encrypted user data).  
+  - `cart` (tracks books added to the cart).  
+  - `types` (book categories like literature, science).  
 
 ---
 
-### 3. Designing the User Interface (Frontend)  
+#### **4. UI/UX Design**  
+**A. Colors and Visual Design:**  
+- **Primary Colors:**  
+  - **Dark Red (#8B0000)**: For buttons and headings to evoke a classic feel.  
+  - **Black (#000000)**: For primary text clarity.  
+  - **Gray (#808080)**: For backgrounds to reduce eye strain.  
+- **Goal**: Create a visually cohesive theme that aligns with the "old book" aesthetic.  
 
-**Key Components:**  
-- **Display Books:** I created a page to display books stored in the database. I fetched this data from the backend using `fetch` or `axios`.  
-- **Add Book:** I designed a form that allows users to enter new book details (title, author, year, type, image) and sends the data to the backend via `POST` to store it in the database.  
-- **Filter by Type:** I added a dropdown filter to enable users to filter books by their type.  
+**B. Typography:**  
+- **Headings**: *Nunito* (clean and modern).  
+- **Body Text**: *Nunito* (balanced readability).  
 
----
-
-### 4. Creating the API (Backend)  
-
-**CRUD Operations:**  
-- **Create:** When adding a new book, the data is sent to the API to store it in the database.  
-- **Read:** When loading the page, the frontend sends a request to the backend to retrieve the list of books.  
-- **Update:** When editing a book, the modified data is sent through the API to update the record in the database.  
-- **Delete:** I implemented a delete function where a request is sent to the backend to delete the selected book.  
+**C. Image Style:**  
+Surreal and Abstract Collage
 
 ---
 
-### 5. Integrating Frontend and Backend  
+#### **5. Interactive Features**  
+**A. Cart System:**  
+- **Management**:  
+  - Temporary use of `localStorage` (instead of React Context due to initial complexity).  
+  - Display item count next to the cart icon in the navigation bar.  
+- **Navigation**:  
+  - "Cart" button redirects to the cart page via `<Link to="/cart">`.  
+  - "Back to Shopping" button on the cart page redirects to the homepage.  
 
-**Interaction Between Them:**  
-- Data is exchanged between the frontend and backend using HTTP Requests (`GET`, `POST`, `PUT`, `DELETE`) via `axios`.  
-- Success or failure messages are sent from the backend and displayed on the frontend to confirm the operations.  
+**B. Search and Filtering:**  
+- **Search by Name/Author**:  
+  - Text input field with real-time updates using `onChange`.  
+- **Filter by Category**:  
+  - Dropdown menu populated with categories from the `types` table.  
 
-**State Management:**  
-- I used `useState` in React to manage the data in the UI, such as the list of books and the new book data.  
-- I ensured the UI automatically updates when a new book is added, or an existing book is modified or deleted, by using `useEffect` after performing the operations.  
-
----
-
-### 6. Challenges Faced and Solutions  
-
-1. **Synchronizing Data Between Frontend and Backend:**  
-   - Challenge: The UI was not updating immediately after adding or deleting books.  
-   - Solution: I used `useEffect` to fetch updated data from the backend after every operation, ensuring real-time updates.  
-
-2. **Handling API Responses and Error Management:**  
-   - Challenge: Errors such as failed API requests were not handled effectively, leading to poor user experience.  
-   - Solution: I switched from `fetch` to `axios` for better error management and displayed success/error messages to users.  
-
-3. **Data Validation on Both Frontend and Backend:**  
-   - Challenge: Users could submit empty or incorrect data.  
-   - Solution: I implemented validation on both the frontend and backend to ensure required fields are filled and data is in the correct format.  
-
-4. **Filtering Books by Type:**  
-   - Challenge: Users needed an easy way to browse books based on category.  
-   - Solution: I added a dropdown filter to dynamically display books based on the selected type.  
-
-5. **Managing Book Cover Images:**  
-   - Challenge: Handling image uploads and storing them properly.  
-   - Solution: I used `FormData` in React to send image files to the server and stored the image URLs in the database.  
-
-6. **Enhancing User Experience:**  
-   - Challenge: Users were unsure if actions were successful (e.g., adding or deleting a book).  
-   - Solution: I implemented loading indicators, success notifications, and error messages to improve user feedback.  
+**C. User Greeting:**  
+- **Display Username**:  
+  - Extracted from the JWT token stored in `localStorage` and displayed in the navigation bar.  
+  - Example code:  
+    ```javascript
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const userName = decoded.data.name; // Username
+    ```  
+    - Displayed as: `Welcome, ${userName}!`.  
 
 ---
 
-### 7. Testing and Deployment  
+#### **6. Frontend-Backend Integration**  
+**A. API Requests:**  
+- **Fetch Data**:  
+  - Use `axios.get()` to retrieve books from `/api/books`.  
+- **Submit Data**:  
+  - Example for adding a book:  
+    ```javascript
+    axios.post('/api/books', formData, {  
+      headers: {  
+        'Authorization': `Bearer ${token}`  
+      }  
+    })  
+    ```  
 
-I tested the application continuously to ensure everything worked as expected, from interacting with the API to frontend and backend integration.  
+**B. Access Control:**  
+- **Protected Pages**:  
+  - Book management pages (add/edit/delete) require a valid JWT token.  
+  - The token is sent in the request header (`Authorization: Bearer <token>`).  
 
 ---
 
-### 8. Final Outcome  
+#### **7. Key Challenges and Solutions**  
+**Challenge 1: JWT Signature Issue**  
+- **Issue**: "Invalid Signature" error on jwt.io.  
+- **Cause**: Secret key mismatch between server and client.  
+- **Solution**:The issue is still unresolved: The solution is to use phpdotenv to manage keys via .env, with additional server adjustments required. However, the issue is still unresolved
 
-- Successfully built a complete book management application that connects the Frontend (React) with the Backend (PHP and MySQL) through the API.  
-- Implemented CRUD operations effectively and quickly thanks to React on the frontend and PHP for the API.  
+
+**Challenge 2: Cart State Management**  
+- **Issue**: Difficulty synchronizing cart state across components.  
+- **Solution**: Temporary use of `localStorage` with plans to migrate to React Context.  
+
+**Challenge 3: Responsive Design**  
+- **Issue**: Ensuring consistent book card display across devices.  
+- **Solution**: The solution is to use the Bootstrap grid with col-md-4 to display three cards per row on medium screens. However, some components are still incomplete in terms of responsiveness.
+
+---
+**8Technologies Used for Testing in the Book Management Project**
+****Postman - API Testing & JWT Authentication
+1- Testing API Endpoints (GET, POST, PUT, DELETE):
+
+Sending requests to verify server responses.
+Checking response codes (200 for success, 400 for invalid input, 401 for unauthorized access, 500 for server errors).
+2- User Authentication Testing (JWT Authentication):
+
+Sending login credentials and receiving a JWT token.
+Using the token in protected requests to confirm authentication works.
+Simulating scenarios like incorrect login details .
+3- Verifying Database Data:
+
+Comparing API response data with the values stored in MySQL.
+***-*** Console - Testing React & Frontend Behavior
+1- Validating API Responses:
+
+Using console.log() to inspect data received from the API.
+Checking for errors like 401 Unauthorized or 500 Server Error.
+2-Monitoring React State (useState):
+
+Ensuring state updates correctly when performing actions like adding books to the cart.
+Checking data flow between components via props and context API.
+3- Error Handling Tests:
+
+Entering invalid inputs and ensuring appropriate error messages appear.
+Simulating scenarios like missing data or server connection failure.
+
+#### **9. Outcomes**  
+- **Complete UI**: 4 main pages (Home, Cart, Login, Book Management).  
+- **Secure Authentication**: JWT-protected operations.  
+- **Structured Database**: 4 relational tables with clear connections.  
 
 ---
 
-### 9. Skills Gained  
+#### **10. Lessons Learned**  
+- **Token Management**: Criticality of environment variables for secret keys.  
+- **Component Interaction**: Importance of planning state management in React.  
+- **Visual Design**: Impact of colors and typography on user perception.  
 
-- Learned how to connect the frontend to the backend using technologies like `axios` and `fetch`.  
-- Gained more experience in handling CRUD operations with PHP and MySQL.  
-- Improved my skills in managing data in React using `useState` and `useEffect`.  
+#### **11. Conclusion**  
+A fully functional system for managing used books was successfully developed, combining an engaging UI with robust technical capabilities. Despite challenges (e.g., JWT signature issues), the project achieved its core goals, including:  
+- A secure platform for selling/preserving books.  
+- A heritage-inspired design reflecting the books' cultural value.  
+- Streamlined management workflows for registered users.  
 
----
 
-### Conclusion  
-
-In this project, I focused on integrating the frontend and backend to ensure smooth interaction between the user interface and application data.  
-
-By using Full Stack technologies, I created a cohesive application that efficiently handles data operations in a secure and effective manner.  
-
-🚀
+**Final Notes:**  
+I am available for a live demo or further technical discussions.  
