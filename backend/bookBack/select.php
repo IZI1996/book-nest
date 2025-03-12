@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
     b.id, 
     b.title, 
     b.author, 
-    b.year, 
+    b.price, 
     t.name AS type_name,
     b.image_url
 FROM bookshelf b

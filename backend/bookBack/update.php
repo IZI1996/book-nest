@@ -25,18 +25,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $book_id = intval($_POST['id']);
     $title = trim($_POST['title']);
     $author = trim($_POST['author']);
-    $year = intval($_POST['year']);
+    $price = intval($_POST['price']);
     $type_id = intval($_POST['type_id']);
 
     // Update book with or without image URL
     if ($imageUrl) {
-        $query = "UPDATE bookshelf SET title = ?, author = ?, year = ?, type_id = ?, image_url = ? WHERE id = ?";
+        $query = "UPDATE bookshelf SET title = ?, author = ?, price = ?, type_id = ?, image_url = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssiiis", $title, $author, $year, $type_id, $imageUrl, $book_id);
+        $stmt->bind_param("ssiiis", $title, $author, $price, $type_id, $imageUrl, $book_id);
     } else {
-        $query = "UPDATE bookshelf SET title = ?, author = ?, year = ?, type_id = ? WHERE id = ?";
+        $query = "UPDATE bookshelf SET title = ?, author = ?, price = ?, type_id = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssiii", $title, $author, $year, $type_id, $book_id);
+        $stmt->bind_param("ssiii", $title, $author, $price, $type_id, $book_id);
     }
 
     if ($stmt->execute()) {

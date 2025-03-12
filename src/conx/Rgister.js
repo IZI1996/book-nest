@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
     const [formData, setFormData] = useState({
-        username: "",
+        name: "",
         email: "",
         password: ""
     });
@@ -53,9 +53,9 @@ const Register = () => {
                             <input 
                                 type="text" 
                                 className="form-control" 
-                                name="username"
-                                placeholder="Enter username"
-                                value={formData.username}
+                                name="name"
+                                placeholder="Enter name"
+                                value={formData.name}
                                 onChange={handleChange}
                                 required
                             />

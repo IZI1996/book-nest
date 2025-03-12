@@ -32,7 +32,7 @@ const Header = () => {
           <ul className="d-flex gap-4 mb-0">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
-            <li><Link to="/libiray">Library</Link></li>
+            <li><Link to="/store">Library</Link></li>
           </ul>
         </nav>
 

@@ -10,11 +10,11 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if required form fields are present
-    if (isset($_POST['title']) && isset($_POST['author']) && isset($_POST['year']) && isset($_POST['type']) && isset($_FILES['profileImage'])) {
+    if (isset($_POST['title']) && isset($_POST['author']) && isset($_POST['price']) && isset($_POST['type']) && isset($_FILES['profileImage'])) {
         
         $title = $_POST['title'];
         $author = $_POST['author'];
-        $year = $_POST['year'];
+        $price = $_POST['price'];
         $type_id = $_POST['type'];
 
         // Handle the image upload
@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Move the uploaded image to the target folder
             if (move_uploaded_file($imageTmpName, $imagePath)) {
                 // Prepare the SQL query to insert book details
-                $query = "INSERT INTO bookshelf (title, author, year, image_url, type_id) VALUES (?, ?, ?, ?, ?)";
+                $query = "INSERT INTO bookshelf (title, author, price, image_url, type_id) VALUES (?, ?, ?, ?, ?)";
                 $stmt = $conn->prepare($query);
-                $stmt->bind_param("ssisi", $title, $author, $year, $imagePath, $type_id);
+                $stmt->bind_param("ssisi", $title, $author, $price, $imagePath, $type_id);
 
                 if ($stmt->execute()) {
                     echo json_encode(["message" => "Book was successfully registered."]);

@@ -9,7 +9,7 @@ const EditBook = () => {
   const [book, setBook] = useState({
     title: "",
     author: "",
-    year: "",
+    price: "",
     type_id: "",
     image_url: null, // Image file
   });
@@ -65,7 +65,7 @@ const EditBook = () => {
     formData.append("id", book.id);  // Include the book ID
     formData.append("title", book.title);
     formData.append("author", book.author);
-    formData.append("year", book.year);
+    formData.append("price", book.price);
     formData.append("type_id", book.type_id);
 
     if (book.image_url) {
@@ -88,7 +88,7 @@ const EditBook = () => {
 
       if (result.success) {
         alert("Book updated successfully!");
-        navigate("/"); // Navigate to another page after success
+        navigate("/libiray"); // Navigate to another page after success
       } else {
         alert("Error: " + result.message);
       }
@@ -130,13 +130,13 @@ const EditBook = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="year" className="form-label">Year:</label>
+            <label htmlFor="price" className="form-label">price:</label>
             <input
               type="number"
-              name="year"
-              id="year"
+              name="price"
+              id="price"
               className="form-control form-control-sm"
-              value={book.year || ""}
+              value={book.price || ""}
               onChange={handleChange}
               required
             />

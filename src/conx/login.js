@@ -16,11 +16,25 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost/bookBack/login.php", formData);
+            if (response.data.token) {
+                // Store token in localStorage
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('name', response.data.token);
+
+                
+                // Set default Authorization header for axios
+                axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+                
+                // Redirect to library
+                navigate("/library"); // Fix typo in your original path ("libiray")
+            }
             setResponseMessage(response.data.message || "Login successful!");
         } catch (error) {
-            setResponseMessage("Invalid email or password.");
+            setResponseMessage(error.response?.data?.message || "Invalid email or password.");
         }
-    };
+
+    }
+
     const handleLogin = () => {
         navigate("/libiray"); 
     };

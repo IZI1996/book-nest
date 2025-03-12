@@ -6,7 +6,7 @@ const BookAdder = () => {
     const [formData, setFormData] = useState({
         title: "",
         author: "",
-        year: "",
+        price: "",
         type: ""
     });
 
@@ -38,7 +38,7 @@ const BookAdder = () => {
         const postData = new FormData();
         postData.append('title', formData.title);
         postData.append('author', formData.author);
-        postData.append('year', formData.year);
+        postData.append('price', formData.price);
         postData.append('type', formData.type);
         if (imageFile) postData.append('profileImage', imageFile);
 
@@ -49,7 +49,7 @@ const BookAdder = () => {
                 { headers: { 'Content-Type': 'multipart/form-data' } }
             );
             setResponseMessage(response.data.message);
-            setFormData({ title: "", author: "", year: "", type: "" });
+            setFormData({ title: "", author: "", price: "", type: "" });
             setImageFile(null);
         } catch (error) {
             setResponseMessage(error.response?.data?.message || "Error connecting to the server.");
@@ -91,15 +91,15 @@ const BookAdder = () => {
                             />
                         </div>
 
-                        {/* Year Input */}
+                        {/* price Input */}
                         <div className="mb-3">
-                            <label className="form-label">Publication Year</label>
+                            <label className="form-label">Publication price</label>
                             <input 
                                 type="number" 
                                 className="form-control" 
-                                name="year"
-                                placeholder="Enter publication year"
-                                value={formData.year}
+                                name="price"
+                                placeholder="Enter publication price"
+                                value={formData.price}
                                 onChange={handleChange}
                                 required
                             />

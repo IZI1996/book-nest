@@ -236,3 +236,78 @@ body{
   background: #f9525a;
   box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 }
+
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  color: #0c5460;
+}
+
+.card-container {
+  position: relative;
+  width: 300px; /* حجم الكتاب */
+  height: 400px; /* ارتفاع الكتاب */
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-buttons {
+  position: absolute;
+  bottom: 10px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-buttons .btn {
+  flex: 1;
+  margin: 0 5px;
+  font-size: 14px;
+}
+.card-libary{
+  row-gap: 9rem !important; 
+}
