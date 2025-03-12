@@ -18,7 +18,7 @@ I started by analyzing the requirements and understood that I needed a database 
 
 **Backend:**  
 - I used PHP with MySQL to create an API that processes the data sent from the frontend.  
-- The MySQL database includes a `books` table for storing book information and a `types` table to store different types of books (such as Technology, Science Fiction, etc.).  
+- The MySQL database includes a `books` table for storing book information and a `types` table to store different types of books (such as Technologyq, Science Fiction, etc.).  
 
 ---
 
