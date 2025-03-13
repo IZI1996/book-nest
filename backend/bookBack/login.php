@@ -13,7 +13,6 @@ require_once "vendor/autoload.php";
 
 use Firebase\JWT\JWT;
 
-// تحميل ملف .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 

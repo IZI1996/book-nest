@@ -7,7 +7,7 @@ const Library = () => {
     const [types, setTypes] = useState([]);
     const [selectedType, setSelectedType] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
-    const [username, setUsername] = useState(""); // State for username
+    const [username, setUsername] = useState(""); 
     const navigate = useNavigate();
 
     useEffect(() => {

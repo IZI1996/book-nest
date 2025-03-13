@@ -264,8 +264,8 @@ body{
 
 .card-container {
   position: relative;
-  width: 300px; /* حجم الكتاب */
-  height: 400px; /* ارتفاع الكتاب */
+  width: 300px; 
+  height: 400px; 
   border-radius: 8px;
   background-size: cover;
   background-position: center;

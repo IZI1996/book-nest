@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaShoppingCart } from "react-icons/fa"; // تأكد من أنك قد قمت بتثبيت react-icons
+import { FaShoppingCart } from "react-icons/fa"; 
 import { Link } from "react-router-dom";
 
 const CartIcon = ({ refresh }) => {
@@ -13,7 +13,7 @@ const CartIcon = ({ refresh }) => {
         try {
             const response = await fetch("http://localhost/bookBack/cartcount.php");
             const data = await response.json();
-            setCartCount(data.cartCount); // استخدام القيمة الصحيحة من الرد
+            setCartCount(data.cartCount);
         } catch (error) {
             console.error("Error fetching cart count:", error);
         }

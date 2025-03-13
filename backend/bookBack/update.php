@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if (move_uploaded_file($image, $targetFile)) {
             // Save full URL to image
-            $imageUrl = "http://localhost" . $targetFile; // Adjust this URL if necessary
+            $imageUrl = "http://localhost" . $targetFile; 
         } else {
             echo json_encode(["success" => false, "message" => "Error uploading image"]);
             exit();

@@ -26,7 +26,7 @@ const Login = () => {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
                 
                 // Redirect to library
-                navigate("/library"); // Fix typo in your original path ("libiray")
+                navigate("/library"); 
             }
             setResponseMessage(response.data.message || "Login successful!");
         } catch (error) {

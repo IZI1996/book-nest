@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost"; // Change this if needed
+const API_URL = "http://localhost"; 
 
 const EditBook = () => {
   const { id } = useParams();
@@ -11,7 +11,7 @@ const EditBook = () => {
     author: "",
     price: "",
     type_id: "",
-    image_url: null, // Image file
+    image_url: null, 
   });
   const [types, setTypes] = useState([]);
 
@@ -26,12 +26,12 @@ const EditBook = () => {
           const book = bookData[0]; // Get the first book
           setBook({
             ...book,
-            profileImageUrl: book.image_url ? `${API_URL}/bookBack/images/${book.image_url}` : "", // Assuming the image is stored in a folder
+            profileImageUrl: book.image_url ? `${API_URL}/bookBack/images/${book.image_url}` : "", 
           });
         } else if (typeof bookData === "object") {
           setBook({
             ...bookData,
-            profileImageUrl: bookData.image_url ? `${API_URL}/bookBack/images/${bookData.image_url}` : "", // Handle no image case
+            profileImageUrl: bookData.image_url ? `${API_URL}/bookBack/images/${bookData.image_url}` : "", 
           });
         }
         console.log(bookData)
@@ -48,12 +48,10 @@ const EditBook = () => {
     fetchData();
   }, [id]);
 
-  // Handle form changes
   const handleChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
   };
 
-  // Handle image file change
   const handleFileChange = (e) => {
     setBook({ ...book, image_url: e.target.files[0] });
   };
@@ -62,7 +60,7 @@ const EditBook = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("id", book.id);  // Include the book ID
+    formData.append("id", book.id);  
     formData.append("title", book.title);
     formData.append("author", book.author);
     formData.append("price", book.price);
@@ -78,22 +76,20 @@ const EditBook = () => {
         body: formData,
       });
 
-      // Check if the response is OK
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const result = await response.json();
-      console.log(result); // Log the result for debugging
-
+      console.log(result); 
       if (result.success) {
         alert("Book updated successfully!");
-        navigate("/libiray"); // Navigate to another page after success
+        navigate("/libiray"); 
       } else {
         alert("Error: " + result.message);
       }
     } catch (error) {
-      console.error("Error:", error); // Log the error for debugging
+      console.error("Error:", error); 
       alert("Error submitting form! Check the console for more details.");
     }
   };

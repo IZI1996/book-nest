@@ -22,12 +22,12 @@ const Header = () => {
 
       <div className="container d-flex justify-content-between align-items-center ixed">
         
-        {/* Logo */}
+       
         <div className="logo d-flex align-items-center">
           <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Logo" />
         </div>
 
-        {/* Navbar */}
+        
         <nav className="navbar ms-auto">
           <ul className="d-flex gap-4 mb-0">
             <li><Link to="/">Home</Link></li>
@@ -36,7 +36,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Buttons */}
         <div className="d-flex gap-4 ms-5">
           <Link to="/reg">
             <button className="btn btn-primary px-4" style={{ backgroundColor: '#f9525a' }}>Register</button>

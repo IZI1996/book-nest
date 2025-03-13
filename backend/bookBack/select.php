@@ -6,7 +6,7 @@ header("Content-Type: application/json");
 
 if (isset($_GET['id'])) {
     // Fetch a single book by ID
-    $book_id = intval($_GET['id']); // Convert to integer for safety
+    $book_id = intval($_GET['id']);
     $query = "SELECT * , image_url FROM bookshelf WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $book_id);
@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        $book = $result->fetch_assoc(); // Fetch only one book
+        $book = $result->fetch_assoc(); 
         echo json_encode($book); // Return a single object
     } else {
         echo json_encode(["error" => "Book not found"]);

@@ -39,6 +39,6 @@ function verifyJWT() {
     }
 }
 
-// Example usage:
-verifyJWT(); // This will automatically send the response
+
+verifyJWT(); 
 ?>

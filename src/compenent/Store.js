@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import CartIcon from "./CartIcon";
 
@@ -7,9 +6,8 @@ const Store = () => {
     const [books, setBooks] = useState([]);
     const [types, setTypes] = useState([]);
     const [selectedType, setSelectedType] = useState("");
-    const [searchTerm, setSearchTerm] = useState("");  // State for search input
+    const [searchTerm, setSearchTerm] = useState("");  
     const [refreshCart, setRefreshCart] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         fetchBooksAndTypes();
@@ -77,7 +75,7 @@ const Store = () => {
             <div className="text-end mb-4">
     
                 <div className="container "  style={{ marginTop: "140px" }}>
-            {/* ... */}
+           
             <CartIcon refresh={refreshCart} />
         </div>
             </div>
@@ -136,8 +134,8 @@ const Store = () => {
                                 }}
                             >
                               <div className="position-absolute  w-100 p-3 text-center rounded-bottom" style={{marginTop:'400px'}} >
-                                    <h5 className="card-title">{book.title}</h5>  {/* Display book name */}
-                                    <p className="card-text">{book.type_name}</p>  {/* Display book type */}
+                                    <h5 className="card-title">{book.title}</h5> 
+                                    <p className="card-text">{book.type_name}</p>  
 -                                    <button 
                                         onClick={() => handleAddToCart(book.id)}
                                         className="btn btn-outline-success btn-sm w-45"
