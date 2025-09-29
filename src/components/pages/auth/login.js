@@ -31,7 +31,7 @@ const Login = () => {
                 
                 axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
                 
-                navigate("/store");
+                navigate("/buyer/List");
             }
         } catch (error) {
             const errorMessage = error.response?.data?.message || "Connection error. Try again later.";
