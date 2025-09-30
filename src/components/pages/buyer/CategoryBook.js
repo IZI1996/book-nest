@@ -1,6 +1,7 @@
 // components/pages/buyer/DashboardContent.jsx
 import React, { useState, useEffect } from "react";
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
+import axios from "axios";
 
 function Dashboard() {
   const [books, setBooks] = useState([]);
@@ -64,6 +65,28 @@ function Dashboard() {
         console.error("Error:", error);
     }
   };
+
+const handleAddToFav = async (bookId) => {
+      const token = localStorage.getItem('token')  
+
+  try {
+     const response = await axios.post(
+      'http://localhost/bookBack/favorite.php',
+      {bookId} ,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+
+      }
+    );
+
+        console.log(response)
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className="page-content">
@@ -129,16 +152,17 @@ function Dashboard() {
                   <div className="book-info-under text-center">
                     <h5 className="card-title text-dark fw-bold">{book.title}</h5> 
                     <p className="card-text">{book.type_name}</p>  
-                    <p className="card-text">{book.price} DH</p>  
                     <button 
                       onClick={() => handleAddToCart(book.id)}
                       className="btn btn-sm" 
                     >
                       <FaShoppingCart className="me-2" />
                     </button>
-                    <FaHeart className="me-2" color="red" />
-                    <button className="hover-detail-button">
-                      <span>detail</span>
+              <button 
+                      onClick={() => handleAddToFav(book.id)}
+                      className="btn btn-sm" 
+                    >
+                      <FaHeart className="me-2" />
                     </button>
                   </div>
                 </div>

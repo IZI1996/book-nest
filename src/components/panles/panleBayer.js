@@ -40,12 +40,23 @@ function Bayer() {
   }, []);
 
   const handleLogout = () => {
+    // ✅ إزالة البيانات أولاً
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('userName');
+    
+    // ✅ إغلاق القائمة
+    setIsMenuOpen(false);
+    
+    // ✅ الانتقال إلى الصفحة الرئيسية
     navigate('/');
-    window.location.reload();
+    
+    // ✅ إعادة تحميل الصفحة بعد تأخير بسيط
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -184,59 +195,65 @@ function Bayer() {
             </div>
           </div>
           
-          <div className="navbar-right">
-            <CartIcon />
+     <div className="navbar-right">
+  <CartIcon />
 
-            <div className="user-menu-container" ref={menuRef}>
-              <button className="user-trigger" onClick={toggleMenu}>
-                <div className="user-profile">
-                  <MdAccountCircle size={28} />
-                  <span className="user-name">{username}</span>
-                  <span className={`dropdown-arrow ${isMenuOpen ? 'open' : ''}`}>▼</span>
-                </div>
-              </button>
+  <div className="user-menu-container" ref={menuRef}>
+    <button className="user-trigger" onClick={toggleMenu}>
+      <div className="user-profile">
+        <MdAccountCircle size={28} />
+        <span className="user-name">{username}</span>
+        <span className={`dropdown-arrow ${isMenuOpen ? 'open' : ''}`}>▼</span>
+      </div>
+    </button>
 
-              {isMenuOpen && (
-                <div className="dropdown-menu">
-                  <div className="menu-header">
-                    <MdPerson size={24} />
-                    <span>{username}</span>
-                  </div>
-                  
-                  <div className="menu-divider"></div>
-                  
-                  <button 
-                    className="menu-item"
-                    onClick={() => {
-                      navigate('/buyer');
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    <MdDashboard size={18} />
-                    <span>Dashboard</span>
-                  </button>
-                  
-                  <button 
-                    className="menu-item"
-                    onClick={() => {
-                      navigate('/buyer/fav');
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    <MdSettings size={18} />
-                    <span>Wishlist</span>
-                  </button>
-                  
-                  <div className="menu-divider"></div>
-                  
-                  <button className="menu-item logout-item" onClick={handleLogout}>
-                    <MdLogout size={18} />
-                    <span>Logout</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
+    {isMenuOpen && (
+      <div className="dropdown-menu show"> {/* أضيفي class "show" */}
+        <div className="menu-header">
+          <MdPerson size={20} />
+          <span>Signed in as</span>
+        </div>
+        <div className="menu-header">
+          <strong>{username}</strong>
+        </div>
+        
+        <div className="menu-divider"></div>
+        
+        <button 
+          className="menu-item"
+          onClick={() => {
+            navigate('/seller');
+            setIsMenuOpen(false);
+          }}
+        >
+          <MdDashboard size={18} />
+          <span>Dashboard</span>
+        </button>
+        
+        <button 
+          className="menu-item"
+          onClick={() => {
+            navigate('/seller/library');
+            setIsMenuOpen(false);
+          }}
+        >
+          <MdSettings size={18} />
+          <span>My Library</span>
+        </button>
+        
+        <div className="menu-divider"></div>
+        
+        <button 
+          className="menu-item logout-item" 
+          onClick={handleLogout}
+        >
+          <MdLogout size={18} />
+          <span>Logout</span>
+        </button>
+      </div>
+    )}
+  </div>
+</div>
         </header>
 
         {/* Page Content */}
