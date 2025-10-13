@@ -84,7 +84,7 @@ const EditBook = () => {
       console.log(result); 
       if (result.success) {
         alert("Book updated successfully!");
-        navigate("/libiray"); 
+        navigate("/seller/store"); 
       } else {
         alert("Error: " + result.message);
       }

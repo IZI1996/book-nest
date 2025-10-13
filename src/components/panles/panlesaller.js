@@ -1,7 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
-import { MdPerson, MdAccountCircle, MdLogout, MdSettings, MdDashboard } from 'react-icons/md';
-import { FaShoppingCart } from 'react-icons/fa';
+import { 
+  MdPerson, 
+  MdAccountCircle, 
+  MdLogout, 
+  MdSettings, 
+  MdDashboard,
+  MdAdd,
+  MdBook,
+  MdLibraryBooks,
+  MdSearch,
+  MdMenu,
+  MdChevronLeft,
+  MdChevronRight
+} from 'react-icons/md';
+import { FaBook, FaUser, FaCog } from 'react-icons/fa';
 import '../../Dashboard.css';
 
 function Saller() {
@@ -34,10 +47,7 @@ function Saller() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
     localStorage.removeItem('userName');
-    navigate('/');
-    window.location.reload();
   };
 
   const toggleMenu = () => {
@@ -52,41 +62,8 @@ function Saller() {
     setSearchTerm(e.target.value);
   };
 
-      const handleAddBookClick = () => {
-        navigate("/seller/add-book");
-    };
-
-  // Cart Icon Component
-  const CartIcon = () => {
-    const [cartCount, setCartCount] = useState(0);
-    
-    useEffect(() => {
-      const fetchCartCount = async () => {
-        const token = localStorage.getItem("token");
-        if (token) {
-          try {
-            const response = await fetch("http://localhost/bookBack/cart_count.php", {
-              headers: {
-                "Authorization": `Bearer ${token}`
-              }
-            });
-            const data = await response.json();
-            setCartCount(data.count || 0);
-          } catch (error) {
-            console.error("Error fetching cart count:", error);
-          }
-        }
-      };
-      
-      fetchCartCount();
-    }, []);
-    
-    return (
-      <div className="cart-icon">
-        <FaShoppingCart size={20} />
-        {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-      </div>
-    );
+  const handleAddBookClick = () => {
+    navigate("/seller/add-book");
   };
 
   return (
@@ -95,25 +72,29 @@ function Saller() {
       <aside className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <div className="logo-icon">
-            <i className="fas fa-book"></i>
+            <FaBook className="icon" />
           </div>
           <span className="logo-text">BookStore</span>
           <button className="toggle-btn" onClick={toggleSidebar}>
-            <i className={`fas fa-${isSidebarCollapsed ? 'angle-double-right' : 'angle-double-left'}`}></i>
+            {isSidebarCollapsed ? (
+              <MdChevronRight className="icon" />
+            ) : (
+              <MdChevronLeft className="icon" />
+            )}
           </button>
         </div>
    
         <nav className="sidebar-nav">
-              <button 
-                        onClick={handleAddBookClick}
-                        className="btn btn-primary "style={{marginLeft:'17px'}}
-                    >
-                        + Add New Book
-                    </button>
+          <button 
+            onClick={handleAddBookClick}
+            className="btn btn-primary add-book-btn"
+          >
+            <MdAdd className="btn-icon" />
+            Add New Book
+          </button>
+          
           <div className="nav-section-title">Seller</div>
 
-                
-          
           <a 
             href="/seller/store" 
             className="nav-link"
@@ -122,7 +103,7 @@ function Saller() {
               navigate('/seller/store');
             }}
           >
-            <i className="fas fa-book"></i>
+            <MdLibraryBooks className="nav-icon" />
             <span className="nav-text">My Library</span>
           </a>
 
@@ -134,7 +115,7 @@ function Saller() {
               navigate('/seller/add-book');
             }}
           >
-            <i className="fas fa-plus"></i>
+            <MdAdd className="nav-icon" />
             <span className="nav-text">Add Book</span>
           </a>
 
@@ -147,7 +128,7 @@ function Saller() {
               navigate('/seller/profile');
             }}
           >
-            <i className="fas fa-user"></i>
+            <FaUser className="nav-icon" />
             <span className="nav-text">Profile</span>
           </a>
           
@@ -159,7 +140,7 @@ function Saller() {
               navigate('/seller/settings');
             }}
           >
-            <i className="fas fa-cog"></i>
+            <FaCog className="nav-icon" />
             <span className="nav-text">Settings</span>
           </a>
         </nav>
@@ -183,10 +164,10 @@ function Saller() {
         <header className="top-navbar">
           <div className="navbar-left">
             <button className="menu-toggle" onClick={toggleSidebar}>
-              <i className="fas fa-bars"></i>
+              <MdMenu className="icon" />
             </button>
             <div className="search-box">
-              <i className="fas fa-search"></i>
+              <MdSearch className="search-icon" />
               <input
                 type="text"
                 placeholder="Search books..."
@@ -198,8 +179,6 @@ function Saller() {
           </div>
           
           <div className="navbar-right">
-            <CartIcon />
-
             <div className="user-menu-container" ref={menuRef}>
               <button className="user-trigger" onClick={toggleMenu}>
                 <div className="user-profile">
@@ -210,7 +189,7 @@ function Saller() {
               </button>
 
               {isMenuOpen && (
-                <div className="dropdown-menu">
+                <div className="dropdown-menu show">
                   <div className="menu-header">
                     <MdPerson size={24} />
                     <span>{username}</span>
@@ -232,7 +211,7 @@ function Saller() {
                   <button 
                     className="menu-item"
                     onClick={() => {
-                      navigate('/seller/library');
+                      navigate('/seller/store');
                       setIsMenuOpen(false);
                     }}
                   >
@@ -242,7 +221,13 @@ function Saller() {
                   
                   <div className="menu-divider"></div>
                   
-                  <button className="menu-item logout-item" onClick={handleLogout}>
+                  <button 
+                    className="menu-item logout-item"    
+                    onClick={() => {
+                      handleLogout();
+                      navigate('/auth/login');
+                    }}
+                  >
                     <MdLogout size={18} />
                     <span>Logout</span>
                   </button>
@@ -254,7 +239,6 @@ function Saller() {
 
         {/* Page Content */}
         <main>
-          {/* ✅ هنا سيظهر Library والمحتوى الآخر */}
           <Outlet />
         </main>
       </div>

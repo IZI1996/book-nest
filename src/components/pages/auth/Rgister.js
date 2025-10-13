@@ -68,7 +68,7 @@ const handleSubmit = async (e) => {
                         src="/images/reg.png" 
                         alt="Register" 
                         className="img-fluid" 
-                        style={{ height: "500px", objectFit: "cover" }} 
+                        style={{ height: "400px", objectFit: "cover" }} 
                     />
                 </div>
                 {/* Form Section */}
@@ -143,7 +143,7 @@ const handleSubmit = async (e) => {
 
                     {/* Login Redirect Button */}
                     <div className="text-center mt-3">
-                        <Link to="/log">
+                        <Link to="/auth/login">
                             <button className="btn btn-secondary w-100">Login</button>
                         </Link>
                     </div>

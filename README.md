@@ -13,7 +13,7 @@ Create an electronic platform for selling used books containing readers' notes, 
 - Display book details (name, author, price, cover image, category).  
 - Book management operations (add/edit/delete) with secure JWT authentication.  
 - Interactive interface with search and filtering by name or category.  
-- Aesthetic design reflecting a heritage theme using carefully chosen colors and fonts.  
+- Aesthetic design reflecting a heritage theme uasing carefully chosen colors and fonts.  
 
 ---
 

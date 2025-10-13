@@ -86,7 +86,7 @@ const fetchCartItems = async () => {
                         <h4 className="fw-bold">Total: {totalPrice} dh</h4>
                         <div>
                             <button className="btn btn-success btn-lg me-2">Checkout</button>
-                            <Link to="/store" className="btn btn-outline-primary btn-lg">Continue Shopping</Link>
+                            <Link to="/buyer/categories" className="btn btn-outline-primary btn-lg">Continue Shopping</Link>
                         </div>
                     </div>
                 </>

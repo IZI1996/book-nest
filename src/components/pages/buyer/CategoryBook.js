@@ -2,13 +2,18 @@
 import React, { useState, useEffect } from "react";
 import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import BookDetailModal from './bookDetails'; 
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [books, setBooks] = useState([]);
   const [types, setTypes] = useState([]);
   const [selectedType, setSelectedType] = useState("");
   const [searchTerm, setSearchTerm] = useState("");  
-  const [username, setUsername] = useState(""); 
+  const [username, setUsername] = useState("");
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchBooksAndTypes();
@@ -50,43 +55,62 @@ function Dashboard() {
 
   const handleAddToCart = async (bookId) => {
     const token = localStorage.getItem("token"); 
-    try {
-        const response = await fetch("http://localhost/bookBack/cart.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({ bookId })
-        });
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error("Error:", error);
+    if (!token) {
+      alert('Please login first');
+      return;
     }
-  };
 
-const handleAddToFav = async (bookId) => {
-      const token = localStorage.getItem('token')  
-
-  try {
-     const response = await axios.post(
-      'http://localhost/bookBack/favorite.php',
-      {bookId} ,
-      {
+    try {
+      const response = await fetch("http://localhost/bookBack/cart.php", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
+        body: JSON.stringify({ bookId })
+      });
+      const data = await response.json();
+      console.log(data);
+      alert('Book added to cart successfully!');
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
-      }
-    );
+  const handleAddToFav = async (bookId) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please login first');
+      return;
+    }
 
-        console.log(response)
-  } catch (error) {
-    console.error(error);
-  }
-};
+    try {
+      const response = await axios.post(
+        'http://localhost/bookBack/favorite.php',
+        { bookId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+        }
+      );
+      console.log(response);
+      alert('Book added to favorites!');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleViewDetails = (book) => {
+    setSelectedBook(book);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedBook(null);
+  };
 
   return (
     <div className="page-content">
@@ -135,6 +159,8 @@ const handleAddToFav = async (bookId) => {
           filteredBooks.map((book) => (
             <div className="col" key={book.id}>
               <div className="book-card-container d-flex flex-column align-items-center">
+                
+                {/* حاوية الصورة مع تأثير Hover */}
                 <div className="book-image-wrapper position-relative">
                   <div 
                     className="book-image shadow-lg"
@@ -145,24 +171,41 @@ const handleAddToFav = async (bookId) => {
                       height: "300px",
                       width: "200px",
                       borderRadius: "10px 10px 0 0",
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                     }}
                   ></div>
                   
-                  <div className="book-info-under text-center">
-                    <h5 className="card-title text-dark fw-bold">{book.title}</h5> 
-                    <p className="card-text">{book.type_name}</p>  
+                  {/* زر التفاصيل الذي يظهر عند Hover */}
+                  <button 
+                    className="hover-detail-button"
+                    onClick={() => handleViewDetails(book)}
+                  >
+                    <span>View Details</span>
+                  </button>
+                </div>
+                
+                {/* معلومات الكتاب تحت الصورة */}
+  <div className="book-info-under text-center w-100 p-3 rounded-bottom shadow-sm">
+<h6 className="card-title text-dark fw-bold mb-2" style={{ fontSize: "0.9rem" }}>
+                    {book.title}
+                  </h6> 
+                  <p className="card-text text-muted small mb-2">{book.type_name}</p>
+                  <p className="card-text text-success fw-bold mb-3">{book.price} DH</p>  
+                  
+                  <div className="d-flex justify-content-center gap-2">
                     <button 
                       onClick={() => handleAddToCart(book.id)}
-                      className="btn btn-sm" 
+                      className="btn btn-outline-primary btn-sm"
+                      title="Add to Cart"
                     >
-                      <FaShoppingCart className="me-2" />
+                      <FaShoppingCart />
                     </button>
-              <button 
+                    
+                    <button 
                       onClick={() => handleAddToFav(book.id)}
-                      className="btn btn-sm" 
+                      className="btn btn-outline-danger btn-sm"
+                      title="Add to Favorites"
                     >
-                      <FaHeart className="me-2" />
+                      <FaHeart />
                     </button>
                   </div>
                 </div>
@@ -170,9 +213,20 @@ const handleAddToFav = async (bookId) => {
             </div>
           ))
         ) : (
-          <p className="text-muted text-center w-100">No books found</p>
+          <div className="col-12">
+            <p className="text-muted text-center w-100 py-5">No books found</p>
+          </div>
         )}
       </div>
+
+      {/* الـ Modal لتفاصيل الكتاب */}
+      <BookDetailModal
+        book={selectedBook}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onAddToCart={handleAddToCart}
+      />
+
     </div>
   );
 }

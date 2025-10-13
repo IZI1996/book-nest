@@ -6,7 +6,7 @@ const about = () => {
        <section id="about" className="about">
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 d-flex flex-column justify-content-center" style={{ marginTop: "190px" }}>
+            <div className="col-lg-6 d-flex flex-column justify-content-center" style={{ marginTop: "180px"  }}>
               <div className="content">
                 <h1>About Our Platform</h1>
                 <h2 className="mb-3">Connecting Book Lovers, One Page at a Time</h2>
@@ -20,7 +20,7 @@ const about = () => {
               </div>
             </div>
             <div className="col-lg-6 d-flex align-items-center">
-              <img src={`${process.env.PUBLIC_URL}/images/idea.png`} className="img-fluid" alt="Book Sharing"style={{ marginLeft: "70px" ,marginTop:"90px"}} />
+              <img src={`${process.env.PUBLIC_URL}/images/idea.png`} className="img-fluid" alt="Book Sharing"style={{ marginLeft: "43px" ,marginTop:"150px"}} />
             </div>
           </div>
         </div>

@@ -3,8 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // الصفحات المشتركة
-import Home from './components/pages/shared/Home';
-import About from './components/pages/shared/About';
+
 
 // صفحات المصادقة
 import Login from './components/pages/auth/login';
@@ -22,14 +21,17 @@ import BooksListt from './components/pages/buyer/BooksListt';
 import FavoritePage from './components/pages/buyer/wishList';
 import Bayer from './components/panles/panleBayer';
 import Saller from './components/panles/panlesaller';
+import BookDetail from './components/pages/buyer/bookDetails';
+import MainPage from './main';
+
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* الصفحات المشتركة */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-
+<Route path="/" element={
+    <MainPage />
+} />
         {/* صفحات المصادقة */}
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
@@ -49,7 +51,10 @@ function App() {
           <Route path="categories" element={<CategoryBook />} />
           <Route path="List" element={<BooksListt />} />
           <Route path="fav" element={<FavoritePage />} />
+
         </Route>
+        <Route path="/book/:id" element={<BookDetail />} />
+
       </Routes>
     </BrowserRouter>
   );

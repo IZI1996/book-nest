@@ -1,7 +1,38 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, Outlet } from "react-router-dom"; // ✅ أضيفي Outlet هنا
-import { MdPerson, MdAccountCircle, MdLogout, MdSettings, MdDashboard } from 'react-icons/md';
-import { FaShoppingCart, FaHeart } from 'react-icons/fa';
+import { useNavigate, Outlet } from "react-router-dom";
+import { 
+  MdPerson, 
+  MdAccountCircle, 
+  MdLogout, 
+  MdSettings, 
+  MdDashboard,
+  MdHome,
+  MdCategory,
+  MdFavorite,
+  MdList,
+  MdChecklist,
+  MdMenu,
+  MdSearch,
+  MdChevronLeft,
+  MdChevronRight
+} from 'react-icons/md';
+import { 
+  FaShoppingCart, 
+  FaHeart, 
+  FaBook,
+  FaUser,
+  FaCog,
+  FaList,
+  FaCheck,
+  FaBars
+} from 'react-icons/fa';
+import { 
+  HiHome,
+  HiUser,
+  HiCog,
+  HiViewList,
+  HiCheckCircle
+} from 'react-icons/hi';
 import '../../Dashboard.css';
 import CartIcon from '../pages/buyer/CartIcon'
 import axios from "axios";
@@ -40,23 +71,15 @@ function Bayer() {
   }, []);
 
   const handleLogout = () => {
-    // ✅ إزالة البيانات أولاً
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('userName');
-    
-    // ✅ إغلاق القائمة
     setIsMenuOpen(false);
-    
-    // ✅ الانتقال إلى الصفحة الرئيسية
     navigate('/');
-    
-    // ✅ إعادة تحميل الصفحة بعد تأخير بسيط
     setTimeout(() => {
       window.location.reload();
     }, 100);
   };
-
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -90,11 +113,15 @@ function Bayer() {
       <aside className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <div className="logo-icon">
-            <i className="fas fa-book"></i>
+            <FaBook className="icon" />
           </div>
           <span className="logo-text">BookStore</span>
           <button className="toggle-btn" onClick={toggleSidebar}>
-            <i className={`fas fa-${isSidebarCollapsed ? 'angle-double-right' : 'angle-double-left'}`}></i>
+            {isSidebarCollapsed ? (
+              <MdChevronRight className="icon" />
+            ) : (
+              <MdChevronLeft className="icon" />
+            )}
           </button>
         </div>
         
@@ -108,7 +135,7 @@ function Bayer() {
               navigate('/buyer');
             }}
           >
-            <i className="fas fa-home"></i>
+            <MdHome className="nav-icon" />
             <span className="nav-text">Dashboard</span>
           </a>
           
@@ -121,7 +148,7 @@ function Bayer() {
               navigate('/buyer/categories');
             }}
           >
-            <i className="fas fa-user"></i>
+            <MdCategory className="nav-icon" />
             <span className="nav-text">Category</span>
           </a>
           
@@ -133,7 +160,7 @@ function Bayer() {
               navigate('/buyer/fav');
             }}
           >
-            <i className="fas fa-cog"></i>
+            <MdFavorite className="nav-icon" />
             <span className="nav-text">Wishlist</span>
           </a>
 
@@ -145,7 +172,7 @@ function Bayer() {
               navigate('/buyer/List');
             }}
           >
-            <i className="fas fa-list"></i>
+            <MdList className="nav-icon" />
             <span className="nav-text">Books List</span>
           </a>
 
@@ -157,7 +184,7 @@ function Bayer() {
               navigate('/buyer/checklist');
             }}
           >
-            <i className="fas fa-check"></i>
+            <MdChecklist className="nav-icon" />
             <span className="nav-text">Checklist</span>
           </a>
         </nav>
@@ -181,10 +208,10 @@ function Bayer() {
         <header className="top-navbar">
           <div className="navbar-left">
             <button className="menu-toggle" onClick={toggleSidebar}>
-              <i className="fas fa-bars"></i>
+              <MdMenu className="icon" />
             </button>
             <div className="search-box">
-              <i className="fas fa-search"></i>
+              <MdSearch className="search-icon" />
               <input
                 type="text"
                 placeholder="Search books..."
@@ -195,70 +222,72 @@ function Bayer() {
             </div>
           </div>
           
-     <div className="navbar-right">
-  <CartIcon />
+          <div className="navbar-right">
+            <CartIcon />
 
-  <div className="user-menu-container" ref={menuRef}>
-    <button className="user-trigger" onClick={toggleMenu}>
-      <div className="user-profile">
-        <MdAccountCircle size={28} />
-        <span className="user-name">{username}</span>
-        <span className={`dropdown-arrow ${isMenuOpen ? 'open' : ''}`}>▼</span>
-      </div>
-    </button>
+            <div className="user-menu-container" ref={menuRef}>
+              <button className="user-trigger" onClick={toggleMenu}>
+                <div className="user-profile">
+                  <MdAccountCircle size={28} />
+                  <span className="user-name">{username}</span>
+                  <span className={`dropdown-arrow ${isMenuOpen ? 'open' : ''}`}>▼</span>
+                </div>
+              </button>
 
-    {isMenuOpen && (
-      <div className="dropdown-menu show"> {/* أضيفي class "show" */}
-        <div className="menu-header">
-          <MdPerson size={20} />
-          <span>Signed in as</span>
-        </div>
-        <div className="menu-header">
-          <strong>{username}</strong>
-        </div>
-        
-        <div className="menu-divider"></div>
-        
-        <button 
-          className="menu-item"
-          onClick={() => {
-            navigate('/seller');
-            setIsMenuOpen(false);
-          }}
-        >
-          <MdDashboard size={18} />
-          <span>Dashboard</span>
-        </button>
-        
-        <button 
-          className="menu-item"
-          onClick={() => {
-            navigate('/seller/library');
-            setIsMenuOpen(false);
-          }}
-        >
-          <MdSettings size={18} />
-          <span>My Library</span>
-        </button>
-        
-        <div className="menu-divider"></div>
-        
-        <button 
-          className="menu-item logout-item" 
-          onClick={handleLogout}
-        >
-          <MdLogout size={18} />
-          <span>Logout</span>
-        </button>
-      </div>
-    )}
-  </div>
-</div>
+              {isMenuOpen && (
+                <div className="dropdown-menu show">
+                  <div className="menu-header">
+                    <MdPerson size={20} />
+                    <span>Signed in as</span>
+                  </div>
+                  <div className="menu-header">
+                    <strong>{username}</strong>
+                  </div>
+                  
+                  <div className="menu-divider"></div>
+                  
+                  <button 
+                    className="menu-item"
+                    onClick={() => {
+                      navigate('/seller');
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <MdDashboard size={18} />
+                    <span>Dashboard</span>
+                  </button>
+                  
+                  <button 
+                    className="menu-item"
+                    onClick={() => {
+                      navigate('/seller/library');
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <MdSettings size={18} />
+                    <span>My Library</span>
+                  </button>
+                  
+                  <div className="menu-divider"></div>
+                  
+                  <button 
+                    className="menu-item logout-item" 
+                    onClick={() => {
+                      handleLogout();
+                      navigate('/auth/login');
+                    }}
+                  >
+                    <MdLogout size={18} />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </header>
 
         {/* Page Content */}
         <main>
-          {/* ✅ هذا هو المكان السحري - المحتوى يتغير حسب الرابط */}
           <Outlet />
         </main>
       </div>
