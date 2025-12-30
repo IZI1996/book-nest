@@ -48,6 +48,10 @@ function Saller() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userId');
+                localStorage.removeItem('userRole');
+
   };
 
   const toggleMenu = () => {
@@ -118,6 +122,19 @@ function Saller() {
             <MdAdd className="nav-icon" />
             <span className="nav-text">Add Book</span>
           </a>
+
+                 <a 
+            href="/seller/add-book" 
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/seller/blog');
+            }}
+          >
+            <MdAdd className="nav-icon" />
+            <span className="nav-text"> Blog</span>
+          </a>
+
 
           <div className="nav-section-title">Account</div>
           <a 

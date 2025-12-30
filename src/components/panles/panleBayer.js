@@ -74,6 +74,10 @@ function Bayer() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('userName');
+        localStorage.removeItem('userId');
+                localStorage.removeItem('userRole');
+
+
     setIsMenuOpen(false);
     navigate('/');
     setTimeout(() => {
@@ -175,6 +179,21 @@ function Bayer() {
             <MdList className="nav-icon" />
             <span className="nav-text">Books List</span>
           </a>
+
+
+  <a 
+            href="/buyer/ListBlogs" 
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/buyer/ListBlogs');
+            }}
+          >
+            <MdList className="nav-icon" />
+            <span className="nav-text">Blogs List</span>
+          </a>
+
+
 
           <a 
             href="/buyer/checklist" 

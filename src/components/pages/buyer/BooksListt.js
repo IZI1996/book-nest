@@ -40,28 +40,6 @@ function Dashboard() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('userName');
-    navigate('/');
-    window.location.reload();
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed);
-  };
-
-  const handlePageChange = (pageId) => {
-    setActivePage(pageId);
-    if (window.innerWidth <= 768) {
-      setIsSidebarCollapsed(true);
-    }
-  };
 
   const fetchBooksAndTypes = async () => {
     try {

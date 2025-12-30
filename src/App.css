@@ -1,12 +1,12 @@
-
+/* App.css */
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Parkinsans:wght@300..800&family=Playwrite+US+Trad+Guides&display=swap');
 
 
-body{
-  font-family: "Parkinsans", sans-serif  !important;
+body {
+  font-family: "Parkinsans", sans-serif !important;
   font-optical-sizing: auto;
-
 }
+
 .App {
   text-align: center;
 }
@@ -46,15 +46,9 @@ body{
   }
 }
 
-
-
-
-
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
+/* ==================== Header ==================== */
 .header {
-  background: transparent !important; /* شفاف تماماً */
+  background: transparent !important;
   transition: all 0.5s;
   padding: 20px 0;
   position: fixed;
@@ -65,12 +59,11 @@ body{
 }
 
 .header.header-scrolled {
-  background: #fff !important; /* أبيض عند التمرير */
+  background: #fff !important;
   padding: 15px 0;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
 }
 
-/* اللوجو */
 .header .logo img {
   max-height: 150px;
   margin-right: 6px;
@@ -78,7 +71,6 @@ body{
   transition: all 0.5s;
 }
 
-/* تصغير اللوجو عند التمرير */
 .header.header-scrolled .logo img {
   max-height: 120px;
   margin-top: -30px;
@@ -93,9 +85,7 @@ body{
   margin-top: 1px;
 }
 
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
+/* ==================== Navigation ==================== */
 .navbar {
   padding: 0;
 }
@@ -112,12 +102,10 @@ body{
   position: relative;
 }
 
-
-
-
 .header-scrolled .navbar a.active::after {
-    width: 100%;
+  width: 100%;
 }
+
 .navbar a {
   display: flex;
   align-items: center;
@@ -137,13 +125,12 @@ body{
   margin-left: 5px;
 }
 
-.navbar a:hover, 
-.navbar .active, 
-.navbar li:hover > a {
+.navbar a:hover,
+.navbar .active,
+.navbar li:hover>a {
   color: #f9525a !important;
 }
 
-/* الأزرار عندما الـ Header شفاف */
 .header:not(.header-scrolled) .btn-outline-primary {
   border: solid white 2px !important;
   color: white !important;
@@ -155,7 +142,6 @@ body{
   color: #f9525a !important;
 }
 
-/* الأزرار عندما الـ Header أبيض */
 .header.header-scrolled .btn-outline-primary {
   border: solid #f9525a 2px !important;
   color: #f9525a !important;
@@ -167,7 +153,6 @@ body{
   color: white !important;
 }
 
-/* زر Register ثابت */
 .btn-primary {
   background-color: #f9525a !important;
   border: none !important;
@@ -177,29 +162,21 @@ body{
   background-color: #e04149 !important;
 }
 
-/* تأثيرات التمرير */
-.header {
-  transition: all 0.3s ease-in-out;
-}
-
-/* إضافة مساحة للمحتوى تحت الـ Header */
 .main-content {
   padding-top: 120px;
   min-height: 100vh;
 }
 
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
+/* ==================== Hero ==================== */
 .hero {
   width: 100%;
   height: 100vh;
   background-size: cover;
-  margin-top:  -21px;
+  margin-top: -21px;
 }
-.hero .bg{
 
-margin-top: 120px !important;
+.hero .bg {
+  margin-top: 120px !important;
 }
 
 .hero h1 {
@@ -214,7 +191,7 @@ margin-top: 120px !important;
   margin: 15px 0 0 0;
   font-size: 26px;
 }
-/* btn header styl  */
+
 .hero .btn-get-started {
   margin-top: 30px;
   padding: 15px 30px;
@@ -224,17 +201,11 @@ margin-top: 120px !important;
   box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 }
 
-
-
-
 @media (min-width: 1024px) {
   .hero {
     background-attachment: fixed;
   }
 }
-
-
-
 
 @media (max-width: 991px) {
   .hero {
@@ -274,7 +245,7 @@ margin-top: 120px !important;
   box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 }
 
-
+/* ==================== Cards ==================== */
 .card {
   transition: transform 0.3s ease;
 }
@@ -300,8 +271,8 @@ margin-top: 120px !important;
 
 .card-container {
   position: relative;
-  width: 300px; 
-  height: 400px; 
+  width: 300px;
+  height: 400px;
   border-radius: 8px;
   background-size: cover;
   background-position: center;
@@ -342,30 +313,12 @@ margin-top: 120px !important;
   margin: 0 5px;
   font-size: 14px;
 }
-.card-libary{
-  row-gap: 9rem !important; 
+
+.card-libary {
+  row-gap: 9rem !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* src/components/BookDetailModal/BookDetailModal.css */
+/* ==================== Modal ==================== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -434,11 +387,11 @@ margin-top: 120px !important;
 }
 
 .modal-body {
-    position: relative;
-    padding: 12px !important;
-    flex: 1 1 auto;
-    padding: var(--bs-modal-padding);
-    background-color: white;
+  position: relative;
+  padding: 12px !important;
+  flex: 1 1 auto;
+  padding: var(--bs-modal-padding);
+  background-color: white;
 }
 
 .book-detail-grid {
@@ -452,7 +405,6 @@ margin-top: 120px !important;
   justify-content: center;
 }
 
-/* هذه للصورة في الـ Modal فقط */
 .modal-book-image {
   width: 100%;
   max-width: 300px;
@@ -550,7 +502,8 @@ margin-top: 120px !important;
   margin-top: 10px;
 }
 
-.add-to-cart-btn, .wishlist-btn {
+.add-to-cart-btn,
+.wishlist-btn {
   flex: 1;
   display: flex;
   align-items: center;
@@ -585,33 +538,29 @@ margin-top: 120px !important;
   transform: translateY(-2px);
 }
 
-/* تصميم متجاوب */
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
     margin: 10px;
   }
-  
   .book-detail-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
   .action-buttons {
     flex-direction: column;
   }
-  
   .modal-book-image {
     max-width: 250px;
     height: 350px;
   }
 }
 
-.book-image{
-      border-radius: 10px 10px 12px 10px !important;
-
+.book-image {
+  border-radius: 10px 10px 12px 10px !important;
 }
-/* CSS لبطاقات الكتب في الـ Dashboard - ملف منفصل أو قسم مختلف */
+
+/* ==================== Dashboard Cards ==================== */
 .dashboard-book-card {
   margin-bottom: 30px;
   transition: transform 0.3s ease;
@@ -627,7 +576,6 @@ margin-top: 120px !important;
   border-radius: 10px 10px 0 0;
 }
 
-/* هذه للصورة في بطاقات الـ Dashboard فقط */
 .dashboard-book-image {
   transition: all 0.4s ease;
   background-size: cover;
@@ -647,7 +595,6 @@ margin-top: 120px !important;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%) translateY(80px);
-  
   background: rgba(59, 130, 246, 0.9);
   color: white;
   border: none;
@@ -655,11 +602,9 @@ margin-top: 120px !important;
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
-  
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s ease;
-  
   display: flex;
   align-items: center;
   gap: 8px;
@@ -682,9 +627,8 @@ margin-top: 120px !important;
   width: 200px;
 }
 
-
-
-.btn-outline-primary, .btn-outline-danger {
+.btn-outline-primary,
+.btn-outline-danger {
   border-width: 2px;
   transition: all 0.3s ease;
   padding: 6px 10px;
@@ -700,16 +644,7 @@ margin-top: 120px !important;
   color: white;
 }
 
-/* store  */
-.card-header{
-  
-}
-
-
-
-
-
-/*************** Services.css ********************/
+/* ==================== Services ==================== */
 .services-section {
   padding: 80px 0;
   background: #f8f9fa;
@@ -780,10 +715,10 @@ margin-top: 120px !important;
   background: #e04149;
   transform: translateY(-2px);
 }
-/* Services.css */
+
 .service-react-icon {
   font-size: 3.5rem;
-  color: #f9525a; /* لون رئيسي */
+  color: #f9525a;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -793,14 +728,13 @@ margin-top: 120px !important;
   transform: scale(1.2);
 }
 
-/* Statistics.css */
+/* ==================== Statistics ==================== */
 .statistics-section {
   padding: 60px 0;
   background: linear-gradient(135deg, #f9525a 0%, #ff6b6b 100%);
   color: white;
   text-align: center;
   height: 100px;
-  
 }
 
 .stat-card {
@@ -831,29 +765,11 @@ margin-top: 120px !important;
   margin: 0;
 }
 
-
-/* Statistics.css */
-.statistics-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f9525a 0%, #ff6b6b 100%);
-  color: white;
-  text-align: center;
-}
-
-.stat-card {
-  padding: 30px 20px;
-  transition: transform 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-10px);
-}
-
 .stat-icon-wrapper {
   margin-bottom: 1.5rem;
 }
 
-.stat-icon {
+.statistics-section .stat-icon {
   font-size: 3.5rem;
   color: white;
   transition: all 0.3s ease;
@@ -861,24 +777,17 @@ margin-top: 120px !important;
 
 .stat-card:hover .stat-icon {
   transform: scale(1.2);
-  color: #012970; /* لون مميز عند hover */
+  color: #012970;
 }
 
-.stat-number {
+.statistics-section .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   font-family: "Nunito", sans-serif;
 }
 
-.stat-title {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin: 0;
-  font-weight: 600;
-}
-
-/* ContactUs.css */
+/* ==================== Contact Us ==================== */
 .contact-us-section {
   padding: 80px 0;
   background: #f8f9fa;
@@ -928,11 +837,7 @@ margin-top: 120px !important;
   transform: translateY(-2px);
 }
 
-
-
-
-/* ContactFooter.css */
-/* ContactFooter.css */
+/* ==================== Contact Footer ==================== */
 .contact-footer {
   position: relative;
   background-size: cover;
@@ -1127,27 +1032,22 @@ margin-top: 120px !important;
   margin: 0 5px;
 }
 
-/* تحسين responsive */
 @media (max-width: 768px) {
   .contact-footer {
     background-attachment: scroll;
     padding: 40px 0 15px;
   }
-  
   .footer-section {
     margin-bottom: 30px;
     text-align: center;
   }
-  
   .footer-section h4::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
   .social-links {
     justify-content: center;
   }
-  
   .contact-item {
     justify-content: center;
     text-align: center;
@@ -1158,25 +1058,23 @@ margin-top: 120px !important;
   .footer-brand h3 {
     font-size: 1.5rem;
   }
-  
   .footer-section h4 {
     font-size: 1.1rem;
   }
 }
 
-/* SiteHero.css */
+/* ==================== Site Hero ==================== */
 .site-hero-section {
-    position: relative;
-    padding: 200px 0px;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 60vh;
-    display: flex
-;
-    align-items: center;
-    color: white;
+  position: relative;
+  padding: 200px 0px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
 .hero-overlay {
@@ -1242,19 +1140,1000 @@ margin-top: 120px !important;
   .hero-title {
     font-size: 2.5rem;
   }
-  
   .hero-subtitle {
     font-size: 1.2rem;
   }
-  
   .hero-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
   .btn-hero {
     width: 200px;
   }
 }
 
+/* ==================== Blogs ==================== */
+.blogs-cards-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.blog-title {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+.blog-tag {
+  background: #3498db;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+.blog-description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  min-height: 60px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-date {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.view-blog-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.view-blog-btn:hover {
+  background: #219a52;
+}
+
+.loading-cards {
+  text-align: center;
+  padding: 40px;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.no-blogs {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+/* ==================== Blog Homepage & Bloger Styles ==================== */
+/* هذه الأنماط الجديدة للمدونة */
+
+/* Header للصفحات الجديدة */
+.blog-header {
+  background: white !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  padding: 16px 0 !important;
+}
+
+.blog-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-logo {
+  font-family: "Parkinsans", sans-serif !important;
+  font-size: 24px;
+  font-weight: 700;
+  color: #f9525a;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.blog-nav-links {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+}
+
+.blog-nav-link {
+  color: #374151;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.blog-nav-link:hover {
+  color: #f9525a;
+}
+
+.blog-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.blog-social-icon {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.blog-social-icon:hover {
+  color: #f9525a;
+  transform: scale(1.1);
+}
+
+/* Hero Section للمدونة */
+.blog-hero-section {
+  position: relative;
+  height: 400px;
+  background: linear-gradient(135deg, #fbcfe8 0%, #ddd6fe 50%, #bfdbfe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 0 !important;
+}
+
+.blog-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+}
+
+.blog-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.blog-hero-title {
+  font-family: "Parkinsans", sans-serif !important;
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.blog-hero-subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Featured Posts */
+.blog-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+
+.blog-featured-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.blog-featured-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.blog-featured-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-featured-content {
+  padding: 20px;
+}
+
+.blog-featured-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.blog-featured-date {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Main Content Layout */
+.blog-main-container {
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+
+.blog-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .blog-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Article Styles */
+.blog-article-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-article-header {
+  margin-bottom: 24px;
+}
+
+.blog-article-category {
+  display: inline-block;
+  background: #f9525a;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.blog-article-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.blog-article-meta {
+  display: flex;
+  gap: 16px;
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.blog-article-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blog-article-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.blog-article-content p {
+  margin-bottom: 24px;
+}
+
+/* Sidebar Styles */
+.blog-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.blog-sidebar-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.blog-search-box {
+  background: #fce7f3;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.blog-search-input {
+  position: relative;
+}
+
+.blog-search-input input {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.blog-search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.blog-recent-post {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.blog-recent-post:hover {
+  background: #f9fafb;
+}
+
+.blog-recent-post:hover .blog-recent-title {
+  color: #f9525a;
+}
+
+.blog-recent-image {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.blog-recent-info {
+  flex: 1;
+}
+
+.blog-recent-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.blog-recent-date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.blog-category-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.blog-category-item:hover {
+  color: #f9525a;
+}
+
+.blog-category-count {
+  color: #9ca3af;
+}
+
+.blog-newsletter-box {
+  background: linear-gradient(135deg, #f9a8d4 0%, #f472b6 100%);
+  padding: 24px;
+  border-radius: 12px;
+  color: white;
+}
+
+.blog-newsletter-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.blog-newsletter-text {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.blog-newsletter-input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.blog-newsletter-button {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  color: #f9525a;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.blog-newsletter-button:hover {
+  background: #f3f4f6;
+}
+
+/* Footer للمدونة */
+.blog-footer {
+  background: linear-gradient(135deg, #f9a8d4 0%, #f472b6 100%);
+  padding: 48px 0 24px;
+  margin-top: 64px;
+  color: white;
+}
+
+.blog-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.blog-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.blog-footer-brand h3 {
+  font-family: "Parkinsans", sans-serif !important;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, white, #fce7f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blog-footer-links h4,
+.blog-footer-social h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.blog-footer-links h4::after,
+.blog-footer-social h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+.blog-footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-footer-links li {
+  margin-bottom: 12px;
+}
+
+.blog-footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.blog-footer-links a:hover {
+  color: white;
+  padding-left: 8px;
+}
+
+.blog-footer-social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.blog-footer-social-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.blog-footer-social-icon:hover {
+  background: white;
+  color: #f9525a;
+  transform: translateY(-3px);
+}
+
+.blog-footer-copyright {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-header-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .blog-nav-links {
+    gap: 16px;
+  }
+  
+  .blog-hero-title {
+    font-size: 48px;
+  }
+  
+  .blog-hero-subtitle {
+    font-size: 20px;
+  }
+  
+  .blog-article-title {
+    font-size: 28px;
+  }
+  
+  .blog-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pagination */
+.blog-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.blog-pagination-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.blog-pagination-button:hover {
+  border-color: #f9525a;
+  color: #f9525a;
+}
+
+.blog-pagination-button.active {
+  background: #f9525a;
+  border-color: #f9525a;
+  color: white;
+}
+
+/* Contact Section في المدونة */
+.blog-contact-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+  .blog-contact-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-contact-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-contact-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.blog-contact-text {
+  color: #6b7280;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.blog-contact-form input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.blog-contact-form input:focus {
+  outline: none;
+  border-color: #f9525a;
+}
+
+.blog-contact-button {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.blog-contact-button:hover {
+  background: #374151;
+}
+
+.blog-cta-card {
+  background: linear-gradient(135deg, #f9a8d4 0%, #f472b6 100%);
+  border-radius: 12px;
+  padding: 32px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-cta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.blog-cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.blog-cta-title {
+  font-family: "Parkinsans", sans-serif !important;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.blog-cta-text {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.blog-cta-button {
+  background: white;
+  color: #f9525a;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.blog-cta-button:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+/* Instagram Feed Section */
+.blog-instagram-feed {
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.blog-instagram-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.blog-instagram-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mb-8 {
+  margin-bottom: 32px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mt-8 {
+  margin-top: 32px;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+.p-6 {
+  padding: 24px;
+}
+
+.p-8 {
+  padding: 32px;
+}
+
+.rounded-lg {
+  border-radius: 12px;
+}
+
+.shadow-lg {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading States */
+.blog-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.blog-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f3f4f6;
+  border-top-color: #f9525a;
+  border-radius: 50%;
+  animation: blog-spin 1s linear infinite;
+}
+
+@keyframes blog-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ==================== Bloger Additional Styles ==================== */
+/* Custom Bootstrap Styles for Bloger */
+.bg-pink {
+  background-color: #ec4899 !important;
+}
+
+.text-pink {
+  color: #ec4899 !important;
+}
+
+.btn-pink {
+  background-color: #ec4899 !important;
+  border-color: #ec4899 !important;
+  color: white !important;
+}
+
+.btn-pink:hover {
+  background-color: #db2777 !important;
+  border-color: #db2777 !important;
+}
+
+.bg-pink-light {
+  background-color: #fce7f3 !important;
+}
+
+.bg-pink-gradient {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+}
+
+/* Hover Effects */
+.hover-pink:hover {
+  color: #ec4899 !important;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card Images */
+.card-img {
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+}
+
+/* Text Styles */
+.font-serif {
+  font-family: Georgia, serif !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem !important;
+  }
+  
+  .display-1 {
+    font-size: 3rem !important;
+  }
+}
+
+/* Fix for Bootstrap spacing */
+.min-vh-100 {
+  min-height: 100vh !important;
+}
+
+/* Ensure proper display of icons */
+.fab, .fas {
+  font-size: 1rem;
+}
+
+/* Custom shadow */
+.shadow-lg {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Arabic font support */
+[dir="rtl"] .text-start {
+  text-align: right !important;
+}
+
+[dir="rtl"] .me-3 {
+  margin-right: 0 !important;
+  margin-left: 1rem !important;
+}
+
+[dir="rtl"] .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}

@@ -66,7 +66,7 @@ const BookAdder = () => {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
                 },
-                timeout: 30000 // 30 ثانية
+                timeout: 30000 
             }
         );
         
@@ -88,16 +88,13 @@ const BookAdder = () => {
         console.log('=== RESPONSE ERROR ===');
         
         if (error.response) {
-            // الطلب تم والسيرفر أعاد خطأ
             const errorMessage = error.response.data.message || 'Unknown error';
             console.error('Error response:', error.response.data);
             setResponseMessage(`Error: ${errorMessage}`);
         } else if (error.request) {
-            // الطلب تم但没有 استجابة
             console.error('No response received');
             setResponseMessage("No response from server. Please check if the server is running.");
         } else {
-            // خطأ في إعداد الطلب
             console.error('Request setup error:', error.message);
             setResponseMessage("Request error: " + error.message);
         }
